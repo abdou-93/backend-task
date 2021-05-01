@@ -1,5 +1,6 @@
 package com.gemography.backendtask.service;
 
+import com.gemography.backendtask.exception.ThirdPartyException;
 import com.gemography.backendtask.model.Language;
 import com.gemography.backendtask.model.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class LanguageDataService {
         this.repositoryDataService = repositoryDataService;
     }
 
-    public List<Language> getAll() {
+    public List<Language> getAll() throws ThirdPartyException {
         Map<String, Language> languageMap = new HashMap<>();
         List<Language> allLanguage = new ArrayList<>();
         List<Repository> repositoryList = repositoryDataService.getAll();

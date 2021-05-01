@@ -1,5 +1,6 @@
 package com.gemography.backendtask.service;
 
+import com.gemography.backendtask.exception.ThirdPartyException;
 import com.gemography.backendtask.model.Repository;
 import com.gemography.backendtask.model.RepositoryOwner;
 import com.gemography.backendtask.model.github.RepositoriesResponse;
@@ -15,7 +16,7 @@ public class RepositoryDataService {
 
     private String url = "https://api.github.com/search/repositories?q=created:>2020-04-28&sort=stars&order=desc&per_page=100";
 
-    public List<Repository> getAll() {
+    public List<Repository> getAll() throws ThirdPartyException {
         List<Repository> repositoryList = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
         try {
@@ -30,6 +31,8 @@ public class RepositoryDataService {
             }
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
+            String message = "Error while getting the data for Github with error message: " + ex.getMessage();
+            throw new ThirdPartyException(message, ex);
         }
         return repositoryList;
     }

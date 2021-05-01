@@ -1,5 +1,6 @@
 package com.gemography.backendtask.service;
 
+import com.gemography.backendtask.exception.ThirdPartyException;
 import com.gemography.backendtask.model.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class LanguageService {
         this.languageDataService = languageDataService;
     }
 
-    public List<Language> getAll() {
+    public List<Language> getAll() throws ThirdPartyException {
         return languageDataService.getAll();
     }
 }
