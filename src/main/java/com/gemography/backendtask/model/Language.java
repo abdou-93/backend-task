@@ -1,5 +1,6 @@
 package com.gemography.backendtask.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 @Component
 public class Language {
+    @ApiModelProperty(dataType = "String", example = "java")
     private String name;
+
+    @ApiModelProperty(dataType = "integer", example = "10")
     private int numberOfRepos;
+
     private List<Repository> repositoryList = new ArrayList<>();
 
     public Language(String name) {
